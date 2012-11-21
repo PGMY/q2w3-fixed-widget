@@ -30,6 +30,7 @@ Right sidebar, last widget (Google Ads). Scroll down to the bottom (may need to 
 = Why plugin is not working? =
 
 There are several reasons:
+
 1. No wp_head() and wp_footer() functions in template. Check header.php and footer.php of your current template.
 2. Widgets have no unique IDs. 
 How to check. Place two text widgets in your sidebar. Then look at html source of your site. If these two widgets will have the same IDs (widget_text) - that's the root of the problem.
