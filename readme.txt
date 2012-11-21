@@ -10,11 +10,11 @@ Fixes positioning of the selected widgets, when the page is scrolled down.
 
 == Description ==
 
-This is a very lightweight plugin with greate functionality )
+This is a very lightweight plugin with greate functionality! )
 
 Enable "Fixed widget" option on ANY active widget (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) and it will be always in sight when page is scrolled down.
 
-There is no problem to "Fix" (or "Stick") more than one widget, but remember about browser window height! Too many widgets can overlap with sidebar or always be out of sight.
+There is no problem to "Fix" (or "Stick") more than one widget, but remember about browser window height! Too many widgets can overlap with footer or always be out of sight.
 
 Watch the demo: [places-finder.com](http://www.places-finder.com/)
 Right sidebar, last widget (Google Ads). Scroll down to the bottom (may need to resize browser window to make scroll longer).
@@ -23,6 +23,7 @@ Right sidebar, last widget (Google Ads). Scroll down to the bottom (may need to 
 
 1. Follow standard WordPress plugin installation procedure
 2. Activate the plugin through the Plugins menu in WordPress
+3. Go to Appearence -> Widgets, enable "Fixed Widget" option on any active widget ([screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) 
 
 == Frequently Asked Questions ==
 
