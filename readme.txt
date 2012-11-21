@@ -10,7 +10,7 @@ Fixes positioning of the selected widgets, when the page is scrolled down.
 
 == Description ==
 
-This is a very lightweight plugin with greate functionality! )
+This is a very lightweight plugin with great functionality! )
 
 Enable "Fixed widget" option on ANY active widget (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) and it will be always in sight when page is scrolled down.
 
@@ -31,10 +31,8 @@ Right sidebar, last widget (Google Ads). Scroll down to the bottom (may need to 
 
 There are several reasons:
 
-1. No wp_head() and wp_footer() functions in template. Check header.php and footer.php of your current template.
-2. Widgets have no unique IDs. 
-How to check. Place two text widgets in your sidebar. Then look at html source of your site. If these two widgets will have the same IDs (widget_text) - that's the root of the problem.
-How to fix. Find `register_sidebar()` function (functions.php). Parameter `before_widget` should be like this: `<li id="%1$s" class="widget-container %2$s">`. Note this part `id="%1$s"`.    
+1. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your current template.
+2. Widgets have no unique IDs. How to check. Place two text widgets in your sidebar. Then look at html source of your site. If these two widgets will have the same IDs (widget_text) - that's the problem. How to fix. Find `register_sidebar()` function (look first at functions.php file). Parameter `before_widget` should be like this: `<li id="%1$s" class="widget-container %2$s">`. Attention to this part: `id="%1$s"`.    
 3. jQuery errors on page.
 
 
