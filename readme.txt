@@ -33,7 +33,7 @@ There are several reasons:
 
 1. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your current template.
 2. Widgets have no unique IDs. How to check. Place two text widgets in your sidebar. Then look at html source of your site. If these two widgets will have the same IDs (widget_text) - that's the problem. How to fix. Find `register_sidebar()` function (look first at functions.php file). Parameter `before_widget` should be like this: `<li id="%1$s" class="widget-container %2$s">`. Attention to this part: `id="%1$s"`.    
-3. jQuery errors on page.
+3. jQuery errors on page. Commonly coused by buggy plugins. Check javascript console of your browser. If you'll find errors, try to locate its source. 
 
 
 == Screenshots ==
