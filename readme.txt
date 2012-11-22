@@ -16,8 +16,8 @@ Enable "Fixed widget" option on ANY active widget (see [screenshot](http://wordp
 
 There is no problem to "Fix" (or "Stick") more than one widget, but remember about browser window height! Too many widgets can overlap with footer or always be out of sight.
 
-Watch the demo: [places-finder.com](http://www.places-finder.com/)
-Right sidebar, last widget (Google Ads). Scroll down to the bottom (may need to resize browser window to make scroll longer).
+[Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
+Right sidebar, last two widgets. Scroll down to the bottom.
 
 == Installation ==
 
