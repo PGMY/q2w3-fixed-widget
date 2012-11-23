@@ -4,7 +4,7 @@ Donate link: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/#donate
 Tags: q2w3, widget, fixed, scroll, fixed scroll, floating, floating widget, fixed widget, sticky, sticky widget, sidebar
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -47,6 +47,11 @@ There are several reasons:
 * [Q2W3 Post Order](http://wordpress.org/extend/plugins/q2w3-post-order/)
 
 == Changelog ==
+
+= 1.0.1 =
+* Improved compatibility with Webkit based browsers (like Chrome and Safari).
+* Removed unnecessary CSS.
+
 
 = 1.0 =
 * First public release.
