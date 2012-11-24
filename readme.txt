@@ -4,7 +4,7 @@ Donate link: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/#donate
 Tags: q2w3, widget, fixed, scroll, fixed scroll, floating, floating widget, fixed widget, sticky, sticky widget, sidebar
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -33,7 +33,7 @@ There are several reasons:
 
 1. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your current template.
 2. Widgets have no unique IDs. How to check. Place two text widgets in your sidebar. Then look at html source of your site. If these two widgets have the same IDs (widget_text) - that's the problem. How to fix. Find `register_sidebar()` function (look first at functions.php file). Parameter `before_widget` should be like this: `<li id="%1$s" class="widget-container %2$s">`. Attention to this part: `id="%1$s"`.    
-3. jQuery errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate its source. 
+3. Javascript errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate its source. 
 
 
 == Screenshots ==
@@ -42,11 +42,14 @@ There are several reasons:
 
 == Other Notes ==
 
-
 * [Code Insert Manager](http://wordpress.org/extend/plugins/q2w3-inc-manager/)
 * [Q2W3 Post Order](http://wordpress.org/extend/plugins/q2w3-post-order/)
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed problem with widgets displayed only on certain pages.
+* Optimized javascript code.
 
 = 1.0.1 =
 * Improved compatibility with Webkit based browsers (like Chrome and Safari).
