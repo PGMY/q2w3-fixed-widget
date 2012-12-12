@@ -4,7 +4,7 @@ Plugin Name: Q2W3 Fixed Widget
 Plugin URI: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/
 Description: Fixes positioning of the selected widgets, when the page is scrolled down.
 Author: Max Bond
-Version: 1.0.3
+Version: 2.0
 Author URI: http://www.q2w3.ru/
 */
 
@@ -16,6 +16,10 @@ if ( is_admin() ) {
 
 	add_filter('widget_update_callback', array( 'q2w3_fixed_widget', 'update_option' ), 10, 3);
 	
+	add_action('admin_init', array( 'q2w3_fixed_widget', 'register_settings' ));
+	
+	add_action('admin_menu', array( 'q2w3_fixed_widget', 'admin_init' ));
+	
 } else {
 	
 	add_action('template_redirect', array( 'q2w3_fixed_widget', 'init' ));
@@ -26,25 +30,23 @@ if ( is_admin() ) {
 	
 }
 
-
 // if class allready loaded return control to the main script
 
 if ( class_exists('q2w3_fixed_widget', false) ) return; 
-
 
 // Plugin class
 
 class q2w3_fixed_widget {
 	
-	protected static $fixed_widgets;
+	const ID = 'q2w3_fixed_widget';
 	
+	protected static $fixed_widgets;
+
 	
 	
 	public static function init() {
 		
-		wp_enqueue_script('jquery');
-		
-		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/functions.js', array('jquery'), '1.3', true);
+		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.js', array('jquery'), '2.0', true);
 	 		
 	}
 		
@@ -62,11 +64,13 @@ class q2w3_fixed_widget {
 			
 			$array = implode(',', self::$fixed_widgets);
 			
-			echo '<script type="text/javascript">q2w3_fixed_widgets = new Array('. $array .');</script>'.PHP_EOL;
+			$options = self::load_options();
+			
+			echo '<script type="text/javascript">q2w3_fixed_widgets = new Array('. $array .'); q2w3_fixed_widgets_margin_top = '.$options['margin-top'].'; q2w3_fixed_widgets_margin_bottom = '.$options['margin-bottom'].';</script>'.PHP_EOL;
 				
 		} else {
 			
-			echo '<script type="text/javascript">q2w3_fixed_widgets = new Array();</script>'.PHP_EOL;
+			echo '<script type="text/javascript">q2w3_fixed_widgets = new Array(); q2w3_fixed_widgets_margin_top = '.$options['margin-top'].'; q2w3_fixed_widgets_margin_bottom = '.$options['margin-bottom'].';</script>'.PHP_EOL;
 				
 		}
 	
@@ -98,6 +102,100 @@ class q2w3_fixed_widget {
     
     	return $instance;
 
+	}
+	
+	protected static function load_language() {
+	
+		$currentLocale = get_locale();
+	
+		if (!empty($currentLocale)) {
+				
+			$moFile = dirname(__FILE__).'/lang/'.$currentLocale.".mo";
+		
+			if (@file_exists($moFile) && is_readable($moFile)) load_textdomain(self::ID, $moFile);
+			
+		}
+	
+	}
+	
+	public static function admin_init() {
+		
+		self::load_language();
+		
+		add_submenu_page( 'themes.php', __('Fixed Widget Options', 'q2w3_fixed_widget'), __('Fixed Widget Options', 'q2w3_fixed_widget'), 'activate_plugins', 'q2w3_fixed_widget', array( __CLASS__, 'settings_page' ) );
+			
+	}
+	
+	protected static function defaults() {
+		
+		$d['margin-top'] = 10;
+			
+		$d['margin-bottom'] = 0;
+		
+		return $d;
+		
+	}
+	
+	protected static function load_options() {
+		
+		$options = get_option(self::ID);	
+		
+		if (!$options) $options = self::defaults();
+		
+		return $options;
+		
+	}
+	
+	public static function register_settings() {
+		
+		register_setting(self::ID, self::ID, array( __CLASS__, 'save_options_filter' ) );
+		
+	}
+	
+	public static function save_options_filter($input) {
+		
+		// Sanitize user input
+		
+		$input['margin-top'] = (int)$input['margin-top'];
+			
+		$input['margin-bottom'] = (int)$input['margin-bottom'];
+			
+		return $input;
+		
+	}
+	
+	public static function settings_page() {
+		
+		$options = self::load_options();
+				
+		echo '<div class="wrap"><h2>'. __('Fixed Widget Options', 'q2w3_fixed_widget') .'</h2>'.PHP_EOL;
+		
+		if ( isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true' ) { 
+		
+			echo '<div id="message" class="updated"><p>'. __('Settings saved.') .'</p></div>'.PHP_EOL;
+		
+		}
+		
+		echo '<form method="post" action="options.php">'.PHP_EOL;
+		
+		echo wp_nonce_field('update-options', '_wpnonce', true, false).PHP_EOL;
+		
+		echo '<input type="hidden" name="action" value="update" />'.PHP_EOL;
+		
+		echo '<input type="hidden" name="page_options" value="'. self::ID .'" />'.PHP_EOL;
+				
+		echo '<p><span style="display: inline-block; width: 100px;">'. __('Margin Top:', 'q2w3_fixed_widget') .'</span><input type="text" name="'. self::ID .'[margin-top]" value="'. $options['margin-top'] .'" style="width: 50px; text-align: center;" />&nbsp;'. __('px', 'q2w3_fixed_widget') .'</p>'.PHP_EOL;
+		
+		echo '<p><span style="display: inline-block; width: 100px;">'. __('Margin Bottom:', 'q2w3_fixed_widget') .'</span><input type="text" name="'. self::ID .'[margin-bottom]" value="'. $options['margin-bottom'] .'" style="width: 50px; text-align: center;" />&nbsp;'. __('px', 'q2w3_fixed_widget') .'</p>'.PHP_EOL;
+						
+		echo '<p class="submit"><input type="submit" class="button-primary" value="'. __('Save Changes') .'" /></p>'.PHP_EOL;
+
+		echo '</form>'.PHP_EOL;
+
+		echo '<div style="position: absolute; top: 100px; right: 20px;"><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="Q36H2MHNVVP7U"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/ru_RU/i/scr/pixel.gif" width="1" height="1"></form></div>'.PHP_EOL;
+				
+		echo '</div><!-- .wrap -->'.PHP_EOL;
+		
 	}
 	
 }
