@@ -20,6 +20,7 @@ From version 2.0 you can customize top and bottom margins (Appearance -> Fixed W
 Right sidebar, last three widgets. Scroll down to the bottom.
 
 Supported languages:
+
 * English
 * Russian
 
@@ -28,7 +29,7 @@ Supported languages:
 1. Follow standard WordPress plugin installation procedure
 2. Activate the plugin through the Plugins menu in WordPress
 3. Go to Appearance -> Widgets, enable "Fixed Widget" option on any active widget ([screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) 
-4. Fine tune fixed widget margins on Appearance -> Fixed Widget Option page
+4. Fine tune fixed widget margins on Appearance -> Fixed Widget Options page
 
 == Frequently Asked Questions ==
 
