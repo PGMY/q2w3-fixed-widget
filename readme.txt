@@ -1,7 +1,7 @@
 === Q2W3 Fixed Widget (Sticky Widget) ===
 Contributors: Max Bond
 Donate link: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/#donate
-Tags: q2w3, widget, fixed, scroll, fixed scroll, floating, floating widget, fixed widget, sticky, sticky widget, sidebar
+Tags: q2w3, widget, fixed, scroll, fixed scroll, floating, floating widget, fixed widget, sticky, sticky widget, sidebar, russian
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: 2.0
@@ -13,22 +13,28 @@ Fixes positioning of the selected widgets, when the page is scrolled down.
 Enable "Fixed widget" option on ANY active widget (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) and it will be always in sight when page is scrolled down.
 
 There is no problem to "Fix" (or "Stick") more than one widget.
-From version 2.0 you can customize top margin and bottom margin to prevent overlaping with the footer (see Appearance -> Fixed Widget Options).
+
+From version 2.0 you can customize top and bottom margins (Appearance -> Fixed Widget Options). 
 
 [Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
-Right sidebar, last two widgets. Scroll down to the bottom.
+Right sidebar, last three widgets. Scroll down to the bottom.
+
+Supported languages:
+* English
+* Russian
 
 == Installation ==
 
 1. Follow standard WordPress plugin installation procedure
 2. Activate the plugin through the Plugins menu in WordPress
 3. Go to Appearance -> Widgets, enable "Fixed Widget" option on any active widget ([screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) 
+4. Fine tune fixed widget margins on Appearance -> Fixed Widget Option page
 
 == Frequently Asked Questions ==
 
 = How to prevent overlaping with the footer? =
 
-Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearance -> Fixed Widget Options. Here you can define top and bottom margins. Set bottom margin value = footer total height + little padding. Check the result.
+Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearance -> Fixed Widget Options. Here you can define top and bottom margins. Set bottom margin value >= footer height. Check the result.
 
 = Why plugin is not working? =
 
