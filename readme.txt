@@ -1,7 +1,7 @@
 === Q2W3 Fixed Widget (Sticky Widget) ===
 Contributors: Max Bond
 Donate link: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/#donate
-Tags: q2w3, widget, fixed, scroll, fixed scroll, floating, floating widget, fixed widget, sticky, sticky widget, sidebar, russian
+Tags: sidebar, widget, scroll, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: 2.0
@@ -19,10 +19,7 @@ From version 2.0 you can customize top and bottom margins (Appearance -> Fixed W
 [Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
 Right sidebar, last three widgets. Scroll down to the bottom.
 
-Supported languages:
-
-* English
-* Russian
+Supported languages: English, Russian
 
 == Installation ==
 
