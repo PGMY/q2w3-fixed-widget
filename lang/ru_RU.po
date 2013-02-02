@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Q2W3 Fixed Widget\n"
-"POT-Creation-Date: 2012-12-12 12:28+0400\n"
-"PO-Revision-Date: 2012-12-12 12:29+0400\n"
+"POT-Creation-Date: 2013-02-02 20:43+0400\n"
+"PO-Revision-Date: 2013-02-02 20:43+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,39 +15,56 @@ msgstr ""
 "ru-dev\\wp-content\\plugins\\q2w3-fixed-widget\n"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:89
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:121
 msgid "Fixed widget"
 msgstr "Зафиксировать виджет"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:129
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:175
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:161
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:207
 msgid "Fixed Widget Options"
 msgstr "Фикс. Виджеты"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:179
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:211
 msgid "Settings saved."
 msgstr ""
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:191
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:223
 msgid "Margin Top:"
 msgstr "Верхний отступ:"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:191
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:193
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:223
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:225
 msgid "px"
 msgstr "пикс."
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:193
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:225
 msgid "Margin Bottom:"
 msgstr "Нижний отступ:"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:195
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:227
+msgid "Custom HTML IDs (each one on a new line):"
+msgstr ""
+"HTML-идентификаторы статических виджетов и прочих<br/> нестандартных "
+"элементов (каждый на новой строке):"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:229
+msgid "Disable plugin on phone devices:"
+msgstr "Отключить плагин на мобильных:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:231
+msgid "Disable plugin on tablet devices:"
+msgstr "Отключить плагин на планшетах:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:233
 msgid "Save Changes"
 msgstr ""
 

@@ -4,7 +4,7 @@ Plugin Name: Q2W3 Fixed Widget
 Plugin URI: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/
 Description: Fixes positioning of the selected widgets, when the page is scrolled down.
 Author: Max Bond
-Version: 2.0
+Version: 2.1
 Author URI: http://www.q2w3.ru/
 */
 
@@ -47,7 +47,9 @@ class q2w3_fixed_widget {
 	public static function init() {
 		
 		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.js', array('jquery'), '2.0', true);
-	 		
+		
+		self::check_custom_ids();
+		
 	}
 		
 	public static function check($instance, $widget, $args){
@@ -57,15 +59,49 @@ class q2w3_fixed_widget {
 		return $instance;
 
 	}
+	
+	protected static function check_custom_ids() {
+		
+		$options = self::load_options();
+		
+		if ( !$options['custom-ids'] ) return;
+		
+		$ids = explode(PHP_EOL, $options['custom-ids']);
+		
+		foreach ( $ids as $id ) self::$fixed_widgets[$id] = "'". $id ."'";
+		
+	}
 		
 	public static function action() { 
 	
+		$options = self::load_options();
+		
+		if ( $options['disable-phone'] == 'yes' || $options['disable-tablet'] == 'yes' ) {
+		
+			require 'q2w3-mobile-detect.php';
+			
+			$detect = new Q2W3_Mobile_Detect();
+			
+			$device_type = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
+			
+			if ( $device_type == 'phone' && $options['disable-phone'] == 'yes' ) {
+				
+				self::$fixed_widgets = array();
+				
+			} 
+			
+			if ( $device_type == 'tablet' && $options['disable-tablet'] == 'yes' ) {
+				
+				self::$fixed_widgets = array();
+				
+			}
+		
+		}
+					
 		if ( is_array(self::$fixed_widgets) && !empty(self::$fixed_widgets) ) {
-			
+						
 			$array = implode(',', self::$fixed_widgets);
-			
-			$options = self::load_options();
-			
+						
 			echo '<script type="text/javascript">q2w3_fixed_widgets = new Array('. $array .'); q2w3_fixed_widgets_margin_top = '.$options['margin-top'].'; q2w3_fixed_widgets_margin_bottom = '.$options['margin-bottom'].';</script>'.PHP_EOL;
 				
 		} else {
@@ -167,7 +203,7 @@ class q2w3_fixed_widget {
 	public static function settings_page() {
 		
 		$options = self::load_options();
-				
+						
 		echo '<div class="wrap"><h2>'. __('Fixed Widget Options', 'q2w3_fixed_widget') .'</h2>'.PHP_EOL;
 		
 		if ( isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true' ) { 
@@ -187,12 +223,18 @@ class q2w3_fixed_widget {
 		echo '<p><span style="display: inline-block; width: 100px;">'. __('Margin Top:', 'q2w3_fixed_widget') .'</span><input type="text" name="'. self::ID .'[margin-top]" value="'. $options['margin-top'] .'" style="width: 50px; text-align: center;" />&nbsp;'. __('px', 'q2w3_fixed_widget') .'</p>'.PHP_EOL;
 		
 		echo '<p><span style="display: inline-block; width: 100px;">'. __('Margin Bottom:', 'q2w3_fixed_widget') .'</span><input type="text" name="'. self::ID .'[margin-bottom]" value="'. $options['margin-bottom'] .'" style="width: 50px; text-align: center;" />&nbsp;'. __('px', 'q2w3_fixed_widget') .'</p>'.PHP_EOL;
-						
+
+		echo '<p><span >'. __('Custom HTML IDs (each one on a new line):', 'q2w3_fixed_widget') .'</span><br/><textarea name="'. self::ID .'[custom-ids]" style="width: 320px; height: 120px;">'. $options['custom-ids'] .'</textarea>'.PHP_EOL;
+		
+		echo '<p><span style="display: inline-block; width: 195px;">'. __('Disable plugin on phone devices:', 'q2w3_fixed_widget') .'</span><input type="checkbox" name="'. self::ID .'[disable-phone]" value="yes" '. checked('yes', $options['disable-phone'], false) .' />'.PHP_EOL;
+
+		echo '<p><span style="display: inline-block; width: 195px;">'. __('Disable plugin on tablet devices:', 'q2w3_fixed_widget') .'</span><input type="checkbox" name="'. self::ID .'[disable-tablet]" value="yes" '. checked('yes', $options['disable-tablet'], false) .' />'.PHP_EOL;
+				
 		echo '<p class="submit"><input type="submit" class="button-primary" value="'. __('Save Changes') .'" /></p>'.PHP_EOL;
 
 		echo '</form>'.PHP_EOL;
 
-		echo '<div style="position: absolute; top: 100px; right: 20px;"><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="Q36H2MHNVVP7U"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/ru_RU/i/scr/pixel.gif" width="1" height="1"></form></div>'.PHP_EOL;
+		echo '<div style="position: absolute; top: 50px; right: 20px;"><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="Q36H2MHNVVP7U"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></form></div>'.PHP_EOL;
 				
 		echo '</div><!-- .wrap -->'.PHP_EOL;
 		
