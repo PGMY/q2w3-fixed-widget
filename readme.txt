@@ -10,20 +10,22 @@ Fixes positioning of the selected widgets, when the page is scrolled down.
 
 == Description ==
 
-Enable "Fixed widget" option on ANY active widget (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) and it will be always in sight when page is scrolled down.
+Enable "Fixed widget" option in widget settings (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) and it will be always in sight when page is scrolled down.
 
-There is no problem to "Fix" (or "Stick") more than one widget.
+There is no problem to "Fix" (or "Stick") more than one widget in a single sidebar. 
 
-From version 2.0 you can customize top and bottom margins (Appearance -> Fixed Widget Options). 
+The plugin is doing its best in "single sidebar -> multiple widgets" environment. You may try to fix widgets in different sidebars, but in most cases the result will be 	
+inadequate.
+
+On plugin settings page (Appearance -> Fixed Widget Options) you can customize top and bottom margins (see last two screenshots for description). 
 
 Form version 2.1 you can define custom widget IDs and disable plugin on mobile devices. 
+Mobile detection is based on [Mobile-Detect project](https://github.com/serbanghita/Mobile-Detect/).
 
 [Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
 Right sidebar, last three widgets. Scroll down to the bottom.
 
-Supported languages: English, Russian
-
-Mobile detection is based on [Mobile-Detect project](https://github.com/serbanghita/Mobile-Detect/). 
+Supported languages: English, Russian 
 
 == Installation ==
 
@@ -34,10 +36,6 @@ Mobile detection is based on [Mobile-Detect project](https://github.com/serbangh
 
 == Frequently Asked Questions ==
 
-= How to prevent overlaping with the footer? =
-
-Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearance -> Fixed Widget Options. Here you can define top and bottom margins. Set bottom margin value >= footer height. Check the result.
-
 = Why plugin is not working? =
 
 There are several reasons:
@@ -46,6 +44,9 @@ There are several reasons:
 2. Javascript errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate and fix its source. 
 3. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your active theme.
 
+= How to prevent overlaping with the footer? =
+
+Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearance -> Fixed Widget Options. Here you can define top and bottom margins. Set bottom margin value >= footer height. Check the result.
 
 == Screenshots ==
 
