@@ -1,6 +1,6 @@
 === Q2W3 Fixed Widget (Sticky Widget) ===
 Contributors: Max Bond
-Donate link: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/#donate
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q36H2MHNVVP7U
 Tags: sidebar, widget, scroll, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.5.1
@@ -14,9 +14,6 @@ Enable "Fixed widget" option in widget settings (see [screenshot](http://wordpre
 
 There is no problem to "Fix" (or "Stick") more than one widget in a single sidebar. 
 
-The plugin is doing its best in "single sidebar -> multiple widgets" environment. You may try to fix widgets in different sidebars, but in most cases the result will be 	
-inadequate.
-
 On plugin settings page (Appearance -> Fixed Widget Options) you can customize top and bottom margins (see last two screenshots for description). 
 
 Form version 2.1 you can define custom widget IDs and disable plugin on mobile devices. 
@@ -26,6 +23,14 @@ Mobile detection is based on [Mobile-Detect project](https://github.com/serbangh
 Right sidebar, last three widgets. Scroll down to the bottom.
 
 Supported languages: English, Russian 
+
+Note. The plugin is doing its best in "single sidebar -> multiple widgets" environment. You may try to fix widgets in different sidebars, but in most cases the result will be 	
+inadequate.
+
+Note two. The plugin is not working with all themes. Theme requirements:
+
+* Widgets must have unique IDs (see FAQ).
+* No JavaScript errors
 
 == Installation ==
 
