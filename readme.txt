@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sidebar, widget, scroll, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.2
+Stable tag: 2.2.1
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -72,6 +72,9 @@ This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalcul
 * [Q2W3 Post Order](http://wordpress.org/extend/plugins/q2w3-post-order/)
 
 == Changelog ==
+
+= 2.2.1 =
+* Fixed PHP [Warning](http://wordpress.org/support/topic/error-with-the-new-update-22?replies=2#post-3963422)
 
 = 2.2 =
 * Now the plugin is able to reflect dynamic page content changes (infinite scroll, ajax basket and other javascript stuff)!!!

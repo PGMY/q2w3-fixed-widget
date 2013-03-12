@@ -87,8 +87,6 @@ function q2w3_sidebar(options) {
 		
 		jQuery(window).on('scroll.' + options.sidebar, function (event) {
 			var scroll = jQuery(this).scrollTop();
-			widget.obj.attr('offset_top', widget.offset_top);	
-			widget.obj.attr('fixed_margin_top', widget.fixed_margin_top);
 			if ( scroll + widget.fixed_margin_bottom >= scroll_position_trigger_bottom ) { // fixed bottom
 				if ( !style_applied_bottom ) {
 					widget.obj.css('position', 'fixed');
