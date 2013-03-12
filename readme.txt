@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sidebar, widget, scroll, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.1
+Stable tag: 2.2
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -14,9 +14,9 @@ Enable "Fixed widget" option in widget settings (see [screenshot](http://wordpre
 
 There is no problem to "Fix" (or "Stick") more than one widget in a single sidebar. 
 
-On plugin settings page (Appearance -> Fixed Widget Options) you can customize top and bottom margins (see last two screenshots for description). 
+New in version 2.2. Now the plugin is able to reflect dynamic page content changes (infinite scroll, ajax basket and other javascript stuff)!!!
 
-Form version 2.1 you can define custom widget IDs and disable plugin on mobile devices. 
+New in version 2.1. Added option to disable plugin on mobile devices. 
 Mobile detection is based on [Mobile-Detect project](https://github.com/serbanghita/Mobile-Detect/).
 
 [Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
@@ -31,6 +31,8 @@ Note two. The plugin is not working with all themes. Theme requirements:
 
 * Widgets must have unique IDs (see FAQ).
 * No JavaScript errors
+
+In some cases theme CSS changes required.
 
 == Installation ==
 
@@ -53,6 +55,10 @@ There are several reasons:
 
 Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearance -> Fixed Widget Options. Here you can define top and bottom margins. Set bottom margin value >= footer height. Check the result.
 
+= What does Refresh Interval option? =
+
+This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalculates sticky widgets parameters. Required by sites with dynamic content (infinite scroll, image lazy load and other javascript stuff). The option have impact on the site performance (client side). Recommended values: 250 - 1500 milliseconds. If you don't have dynamic content, set Refresh interval = 0. 
+
 == Screenshots ==
 
 1. Widget with enabled "Fixed widget" option
@@ -66,6 +72,11 @@ Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearanc
 * [Q2W3 Post Order](http://wordpress.org/extend/plugins/q2w3-post-order/)
 
 == Changelog ==
+
+= 2.2 =
+* Now the plugin is able to reflect dynamic page content changes (infinite scroll, ajax basket and other javascript stuff)!!!
+* Added new option to plugin settings: Refresh interval. Recommended values between 250 - 1500 milliseconds. Note: setting have impact on the site performance (client side). If you don't have dynamic content, set Refresh interval = 0. 
+* Mobile Detect class updated to version 2.5.7
 
 = 2.1 =
 * New option to define custom widget IDs for static sidebars and etc.

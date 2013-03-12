@@ -1,75 +1,128 @@
-jQuery(window).load(function () {  
-	var margin_top = q2w3_fixed_widgets_margin_top;
-	var margin_top_accumulate = margin_top;
-	var margin_bottom = q2w3_fixed_widgets_margin_bottom;
-	var widget_height = new Array();
-	for (var i = 0; i < q2w3_fixed_widgets.length; i++) {
-		widget = jQuery('#' + q2w3_fixed_widgets[i]);
-		if ( widget.attr('id') ) { // element existsts
-			widget_height[i] = widget.outerHeight(true);
+function q2w3_sidebar(options) {
+	
+	if ( !options.widgets) return false;
+	
+	if ( !options.sidebar) options.sidebar = 'q2w3_default'; 
+		
+	var widgets = new Array();
+	
+	var window_height = jQuery(window).height();
+	var document_height = jQuery(document).height();
+		
+	if ( jQuery.browser.mozilla || jQuery.browser.webkit ) { // fixes Mozilla & Webkit page refresh problem. Not working for IE and Opera
+		var sc = jQuery(document).scrollTop()
+		if ( sc > 0 ) {
+			jQuery(document).scrollTop(0);
+			jQuery(document).scrollTop(sc);
+		}
+	}
+	
+	function widget(obj, position, offset_top, fixed_margin_top, fixed_margin_bottom, height, next_widgets_height) {
+		this.obj = obj;
+		this.position = position;
+		this.fixed_margin_top = fixed_margin_top;
+		this.fixed_margin_bottom = fixed_margin_bottom;
+		this.offset_top = offset_top;
+		this.height = height;
+		this.next_widgets_height = next_widgets_height;
+	}
+	
+	var fixed_margin_top = options.margin_top;
+		
+	for ( var i = 0; i < options.widgets.length; i++ ) {
+		widget_obj = jQuery('#' + options.widgets[i]);
+		if ( widget_obj.attr('id') ) { // element exists
+			widgets[i] = new widget();
+			widgets[i].obj = widget_obj;
+			widgets[i].position = widget_obj.css('position');
+			widgets[i].offset_top = widget_obj.offset().top;
+			widgets[i].fixed_margin_top = fixed_margin_top;
+			widgets[i].height = widget_obj.outerHeight(true);
+			widgets[i].fixed_margin_bottom = fixed_margin_top + widgets[i].height;
+			fixed_margin_top += widgets[i].height;
 		} else {
-			widget_height[i] = 0;			
+			widgets[i] = false;			
 		}
 	}
-	for (var i = 0; i < q2w3_fixed_widgets.length; i++) {
-		widget = jQuery('#' + q2w3_fixed_widgets[i]);
-		if ( widget.attr('id') ) { // element existsts
-			q2w3_fixed_widget(widget, margin_top, margin_top_accumulate, margin_bottom, widget_height, i);
-			margin_top_accumulate += widget_height[i];
+	
+	if ( widgets.length < 1 ) return false;
+	
+	for ( var i = 0; i < widgets.length ; i++ ) { 
+		if (widgets[i]) widgets[i].obj.css('position', '');
+	}
+	
+	for ( var i = 0; i < widgets.length ; i++ ) { 
+		if (widgets[i]) widgets[i].offset_top = widgets[i].obj.offset().top;
+	}
+	
+	var next_widgets_height = 0;
+	
+	for ( var i = widgets.length - 1; i >= 0; i-- ) {
+		if (widgets[i]) {
+			widgets[i].next_widgets_height = next_widgets_height;
+			widgets[i].fixed_margin_bottom += next_widgets_height;
+			next_widgets_height += widgets[i].height;
+			if ( widgets[i].position != widgets[i].obj.css('position') ) widgets[i].obj.css('position', widgets[i].position);
 		}
 	}
-	if (jQuery.browser.mozilla || jQuery.browser.opera) { // fixes mozilla, opera page refresh problem
-		var scroll = jQuery(document).scrollTop();
-		jQuery(document).scrollTop(0);
-		jQuery(document).scrollTop(scroll);
+	
+	jQuery(window).off('scroll.' + options.sidebar);
+	
+	for ( var i = 0; i < widgets.length; i++ ) {
+		if (widgets[i]) fixed_widget(widgets[i]);
 	}
-});		
-function q2w3_fixed_widget(widget, margin_top, margin_top_accumulate, margin_bottom, widget_height, i) {
-	var widget_width = widget.css('width');
-	var widget_margin = widget.css('margin');
-	var widget_padding = widget.css('padding');
-	var parent_height = widget.parent().height();
-	var update_parent_height = false;
-	var scroll_border_top = widget.offset().top - margin_top_accumulate;
-	for (var j = i + 1; j < widget_height.length; j++) {
-		margin_bottom += widget_height[j];
-	}
-	var scroll_border_bottom = jQuery(document).height() - margin_bottom;
-	var widgets_height_accumulate = 0;
-	for (var k = i; k >= 0; k--) {
-		widgets_height_accumulate += widget_height[k];		
-	}
-	jQuery(window).scroll(function (event) {
-		var scroll_target = jQuery(this).scrollTop() + widgets_height_accumulate + margin_top;
-		var scroll_delta = scroll_target - scroll_border_bottom + ( jQuery(window).height() - widgets_height_accumulate - margin_top );
-		if ( scroll_target >= scroll_border_bottom ) { // fixed bottom
-			if ( !update_parent_height ) { // needed when sidebar is longer then main content
-				widget.parent().height(parent_height);
-				update_parent_height = true;
+	
+	function fixed_widget(widget) {
+		
+		var scroll_position_trigger_top = widget.offset_top - widget.fixed_margin_top;
+		var scroll_position_trigger_bottom = document_height - options.margin_bottom;
+	
+		var widget_width = widget.obj.css('width');
+		var widget_margin = widget.obj.css('margin');
+		var widget_padding = widget.obj.css('padding');
+		
+		var style_applied_top = false;
+		var style_applied_bottom = false;
+		var style_applied_normal = false;
+		
+		jQuery(window).on('scroll.' + options.sidebar, function (event) {
+			var scroll = jQuery(this).scrollTop();
+			widget.obj.attr('offset_top', widget.offset_top);	
+			widget.obj.attr('fixed_margin_top', widget.fixed_margin_top);
+			if ( scroll + widget.fixed_margin_bottom >= scroll_position_trigger_bottom ) { // fixed bottom
+				if ( !style_applied_bottom ) {
+					widget.obj.css('position', 'fixed');
+					widget.obj.css('top', '');
+					widget.obj.css('width', widget_width);
+					widget.obj.css('margin', widget_margin);
+					widget.obj.css('padding', widget_padding);
+					style_applied_bottom = true;
+					style_applied_top = false;
+					style_applied_normal = false;
+				}
+				widget.obj.css('bottom', scroll + window_height + widget.next_widgets_height - scroll_position_trigger_bottom);
+			} else if ( scroll >= scroll_position_trigger_top ) { // fixed top
+				if ( !style_applied_top ) {
+					widget.obj.css('position', 'fixed');
+					widget.obj.css('top', widget.fixed_margin_top);
+					widget.obj.css('bottom', '');
+					widget.obj.css('width', widget_width);
+					widget.obj.css('margin', widget_margin);
+					widget.obj.css('padding', widget_padding);
+					style_applied_top = true;
+					style_applied_bottom = false;
+					style_applied_normal = false;
+				}
+			} else { // normal
+				if ( !style_applied_normal ) {
+					widget.obj.css('position', '');
+					style_applied_normal = true;
+					style_applied_top = false;
+					style_applied_bottom = false;
+				}
 			}
-			widget.css('position', 'fixed');
-			widget.css('top', '');
-			widget.css('bottom', scroll_delta);
-			widget.css('width', widget_width);
-			widget.css('margin', widget_margin);
-			widget.css('padding', widget_padding);
-		} else if ( jQuery(this).scrollTop() >= scroll_border_top ) { // fixed top
-			if ( !update_parent_height ) { // needed when sidebar is longer then main content
-				widget.parent().height(parent_height);
-				update_parent_height = true;
-			}
-			widget.css('position', 'fixed');
-			widget.css('top', margin_top_accumulate);
-			widget.css('bottom', '');
-			widget.css('width', widget_width);
-			widget.css('margin', widget_margin);
-			widget.css('padding', widget_padding);
-		} else { // normal
-			if ( update_parent_height ) {
-				widget.parent().removeAttr('style');
-				update_parent_height = false;
-			}
-			widget.css('position', '');
-		}
-	});
+		});
+		
+	}	
+	
 }
