@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sidebar, widget, scroll, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -31,6 +31,7 @@ Note two. The plugin is not working with all themes. Theme requirements:
 
 * Widgets must have unique IDs (see FAQ).
 * No JavaScript errors
+* jQuery 1.7 or later
 
 In some cases theme CSS changes required.
 
@@ -51,7 +52,7 @@ There are several reasons:
 2. Javascript errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate and fix its source. 
 3. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your active theme.
 
-= How to prevent overlaping with the footer? =
+= How to prevent overlapping with the footer? =
 
 Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearance -> Fixed Widget Options. Here you can define top and bottom margins. Set bottom margin value >= footer height. Check the result.
 
@@ -73,8 +74,12 @@ This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalcul
 
 == Changelog ==
 
+= 2.2.2 =
+* Fixed PHP [Error](http://wordpress.org/support/topic/breakes-with-php-53)
+* Mobile Detect updated to version 2.5.8
+
 = 2.2.1 =
-* Fixed PHP [Warning](http://wordpress.org/support/topic/error-with-the-new-update-22?replies=2#post-3963422)
+* Fixed PHP [Warning](http://wordpress.org/support/topic/error-with-the-new-update-22)
 
 = 2.2 =
 * Now the plugin is able to reflect dynamic page content changes (infinite scroll, ajax basket and other javascript stuff)!!!
@@ -87,11 +92,11 @@ This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalcul
 * Fixed javascript error when no sidebars exists on a page.
 
 = 2.0 =
-* Fixed footer overlaping problem! Now users can customize top and bottom margins for the fixed widgets from the admin area (Appearance -> Fixed Widget Options).
+* Fixed footer overlapping problem! Now users can customize top and bottom margins for the fixed widgets from the admin area (Appearance -> Fixed Widget Options).
 * Added localization support
 
 = 1.0.3 =
-* Normalized plugin behavior when sidebar is longer then main content. Note: possible overlaping with footer is still exists.
+* Normalized plugin behavior when sidebar is longer then main content. Note: possible overlapping with footer is still exists.
 
 = 1.0.2 =
 * Fixed problem with widgets displayed only on certain pages.

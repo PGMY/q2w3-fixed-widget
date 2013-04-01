@@ -4,7 +4,7 @@ Plugin Name: Q2W3 Fixed Widget
 Plugin URI: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/
 Description: Fixes positioning of the selected widgets, when the page is scrolled down.
 Author: Max Bond
-Version: 2.2.1
+Version: 2.2.2
 Author URI: http://www.q2w3.ru/
 */
 
@@ -21,6 +21,8 @@ if ( is_admin() ) {
 	add_action('admin_menu', array( 'q2w3_fixed_widget', 'admin_init' ));
 	
 } else { 
+	
+	require_once 'q2w3-mobile-detect.php';
 	
 	add_action('template_redirect', array( 'q2w3_fixed_widget', 'init' ));
 	
@@ -78,8 +80,6 @@ class q2w3_fixed_widget {
 		
 		if ( $options['disable-phone'] == 'yes' || $options['disable-tablet'] == 'yes' ) {
 		
-			require 'q2w3-mobile-detect.php';
-			
 			$detect = new Q2W3_Mobile_Detect();
 			
 			$device_type = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
