@@ -114,6 +114,10 @@ function q2w3_sidebar(options) {
 			} else { // normal
 				if ( !style_applied_normal ) {
 					widget.obj.css('position', '');
+					widget.obj.css('top', '');
+					widget.obj.css('width', '');
+					widget.obj.css('margin', '');
+					widget.obj.css('padding', '');
 					style_applied_normal = true;
 					style_applied_top = false;
 					style_applied_bottom = false;
