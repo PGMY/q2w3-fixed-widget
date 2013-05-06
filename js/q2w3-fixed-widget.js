@@ -9,14 +9,6 @@ function q2w3_sidebar(options) {
 	var window_height = jQuery(window).height();
 	var document_height = jQuery(document).height();
 		
-	if ( jQuery.browser.mozilla || jQuery.browser.webkit ) { // fixes Mozilla & Webkit page refresh problem. Not working for IE and Opera
-		var sc = jQuery(document).scrollTop()
-		if ( sc > 0 ) {
-			jQuery(document).scrollTop(0);
-			jQuery(document).scrollTop(sc);
-		}
-	}
-	
 	function widget(obj, position, offset_top, fixed_margin_top, fixed_margin_bottom, height, next_widgets_height) {
 		this.obj = obj;
 		this.position = position;
@@ -66,7 +58,7 @@ function q2w3_sidebar(options) {
 		}
 	}
 	
-	jQuery(window).off('scroll.' + options.sidebar);
+	jQuery(window).off('load scroll.' + options.sidebar);
 	
 	for ( var i = 0; i < widgets.length; i++ ) {
 		if (widgets[i]) fixed_widget(widgets[i]);
@@ -123,7 +115,7 @@ function q2w3_sidebar(options) {
 					style_applied_bottom = false;
 				}
 			}
-		});
+		}).trigger('scroll.' + options.sidebar);
 		
 	}	
 	
