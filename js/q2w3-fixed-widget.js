@@ -117,6 +117,20 @@ function q2w3_sidebar(options) {
 			}
 		}).trigger('scroll.' + options.sidebar);
 		
+		jQuery(window).on('resize', function() {
+			if ( jQuery(window).width() <= options.min_window_width ) {
+				jQuery(window).off('load scroll.' + options.sidebar);
+				widget.obj.css('position', '');
+				widget.obj.css('top', '');
+				widget.obj.css('width', '');
+				widget.obj.css('margin', '');
+				widget.obj.css('padding', '');
+				style_applied_normal = true;
+				style_applied_top = false;
+				style_applied_bottom = false;				
+			}
+		}).trigger('resize');
+		
 	}	
 	
 }

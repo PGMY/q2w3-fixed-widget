@@ -4,7 +4,7 @@ Plugin Name: Q2W3 Fixed Widget
 Plugin URI: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/
 Description: Fixes positioning of the selected widgets, when the page is scrolled down.
 Author: Max Bond
-Version: 2.2.4
+Version: 2.3
 Author URI: http://www.q2w3.ru/
 */
 
@@ -48,7 +48,7 @@ class q2w3_fixed_widget {
 	
 	public static function init() {
 		
-		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.js', array('jquery'), '2.2.4');
+		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.js', array('jquery'), '2.3');
 		
 		self::check_custom_ids();
 		
@@ -56,7 +56,7 @@ class q2w3_fixed_widget {
 		
 	public static function check($instance, $widget, $args){
     	
-		if ( $instance['q2w3_fixed_widget'] ) self::$fixed_widgets[$widget->id] = "'". $widget->id ."'";
+		if ( isset($instance['q2w3_fixed_widget']) && $instance['q2w3_fixed_widget'] ) self::$fixed_widgets[$widget->id] = "'". $widget->id ."'";
 	
 		return $instance;
 
@@ -106,7 +106,7 @@ class q2w3_fixed_widget {
 			
 			echo 'jQuery(document).ready(function(){'.PHP_EOL;
 			
-			echo '  var q2w3_sidebar_options = { "sidebar" : "q2w3_default", "margin_top" : '. $options['margin-top'] .', "margin_bottom" : '. $options['margin-bottom'] .', "widgets" : ['. $array .'] }'.PHP_EOL;
+			echo '  var q2w3_sidebar_options = { "sidebar" : "q2w3_default", "margin_top" : '. $options['margin-top'] .', "margin_bottom" : '. $options['margin-bottom'] .', "min_window_width" : '. $options['min-window-width'] .', "widgets" : ['. $array .'] }'.PHP_EOL;
 			
 			if ( $options['refresh-interval'] > 0 ) {
 
@@ -184,6 +184,8 @@ class q2w3_fixed_widget {
 		
 		$d['refresh-interval'] = 1000;
 		
+		$d['min-window-width'] = 0;
+		
 		return $d;
 		
 	}
@@ -242,6 +244,8 @@ class q2w3_fixed_widget {
 				
 		echo '<p><span >'. __('Custom HTML IDs (each one on a new line):', 'q2w3_fixed_widget') .'</span><br/><textarea name="'. self::ID .'[custom-ids]" style="width: 320px; height: 120px;">'. $options['custom-ids'] .'</textarea>'.PHP_EOL;
 		
+		echo '<p><span style="display: inline-block; width: 195px;">'. __('Disable plugin, when browser window width is less then:', 'q2w3_fixed_widget') .'</span><input type="text" name="'. self::ID .'[min-window-width]" value="'. $options['min-window-width'] .'" style="width: 50px; text-align: center;" />&nbsp;'. __('px', 'q2w3_fixed_widget') .'</p>'.PHP_EOL;
+				
 		echo '<p><span style="display: inline-block; width: 195px;">'. __('Disable plugin on phone devices:', 'q2w3_fixed_widget') .'</span><input type="checkbox" name="'. self::ID .'[disable-phone]" value="yes" '. checked('yes', $options['disable-phone'], false) .' /></p>'.PHP_EOL;
 
 		echo '<p><span style="display: inline-block; width: 195px;">'. __('Disable plugin on tablet devices:', 'q2w3_fixed_widget') .'</span><input type="checkbox" name="'. self::ID .'[disable-tablet]" value="yes" '. checked('yes', $options['disable-tablet'], false) .' /></p>'.PHP_EOL;
