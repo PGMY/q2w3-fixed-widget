@@ -2,7 +2,7 @@ function q2w3_sidebar(options) {
 	
 	if ( !options.widgets) return false;
 	
-	if ( !options.sidebar) options.sidebar = 'q2w3_default'; 
+	if ( !options.sidebar) options.sidebar = 'q2w3-default-sidebar'; 
 		
 	var widgets = new Array();
 	
@@ -118,7 +118,7 @@ function q2w3_sidebar(options) {
 		}).trigger('scroll.' + options.sidebar);
 		
 		jQuery(window).on('resize', function() {
-			if ( jQuery(window).width() <= options.min_window_width ) {
+			if ( jQuery(window).width() <= options.screen_max_width ) {
 				jQuery(window).off('load scroll.' + options.sidebar);
 				widget.obj.css('position', '');
 				widget.obj.css('top', '');

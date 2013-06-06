@@ -4,36 +4,31 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sidebar, widget, scroll, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.3
+Stable tag: 3.0
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
 == Description ==
 
-Enable "Fixed widget" option in widget settings (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) and it will be always in sight when page is scrolled down.
+Enable "Fixed widget" option in the widget settings (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) 
+and it will be always in sight when page is scrolled down or up.
 
-There is no problem to "Fix" (or "Stick") more than one widget in a single sidebar. 
-
-New in version 2.2. Now the plugin is able to reflect dynamic page content changes (infinite scroll, ajax basket and other javascript stuff)!!!
-
-New in version 2.1. Added option to disable plugin on mobile devices. 
-Mobile detection is based on [Mobile-Detect project](https://github.com/serbanghita/Mobile-Detect/).
+There is no problem to "Fix" or "Stick" more than one widget. 
+Version 3.0 brings you a long waited capability to stick widgets located in different sidebars!
 
 [Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
 Right sidebar, last three widgets. Scroll down to the bottom.
 
+Compatibility note. The plugin is not working with all themes. Theme requirements:
+
+* Widgets must have unique id attributes in html code (see [FAQ](http://wordpress.org/extend/plugins/q2w3-fixed-widget/faq/)).
+* jQuery 1.7 required. jQuery 1.8.3 (or later) is recommended.
+* No JavaScript errors, coused by other plugins and scripts.
+* `wp_head()` and `wp_footer()` functions in header.php and footer.php files.
+
+In some cases (widget "jumping" during scroll and etc.) theme CSS changes may be required.
+
 Supported languages: English, Russian 
-
-Note. The plugin is doing its best in "single sidebar -> multiple widgets" environment. You may try to fix widgets in different sidebars, but in most cases the result will be 	
-inadequate.
-
-Note two. The plugin is not working with all themes. Theme requirements:
-
-* Widgets must have unique IDs (see FAQ).
-* No JavaScript errors
-* jQuery 1.7 or later
-
-In some cases theme CSS changes required.
 
 == Installation ==
 
@@ -52,11 +47,18 @@ There are several reasons:
 2. Javascript errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate and fix its source. 
 3. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your active theme.
 
+= I have a responsive theme. How can I make the plugin compatible with it? =
+
+For responsive compatibility I found only one approach: to disable plugin when mobile device detected or when browser window width is less then specified value.
+There are several options to accomplish this task. The latest (and recommended!) is to enable "Screen Max Width" option. 
+For example you have a responsive styles: `@media screen and (max-width: 940px) {...}`. Set "Screen Max Width" = 940 - to disable plugin in responsive mode. 
+The other options are: "Disable plugin on mobile devices" and "Disable plugin on tablet devices". From version 3.0 these options are depricated and will be removed in the near future.  
+
 = How to prevent overlapping with the footer? =
 
 Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearance -> Fixed Widget Options. Here you can define top and bottom margins. Set bottom margin value >= footer height. Check the result.
 
-= What does Refresh Interval option? =
+= Refresh Interval option =
 
 This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalculates sticky widgets parameters. Required by sites with dynamic content (infinite scroll, image lazy load and other javascript stuff). The option have impact on the site performance (client side). Recommended values: 250 - 1500 milliseconds. If you don't have dynamic content, set Refresh interval = 0. 
 
@@ -73,6 +75,12 @@ This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalcul
 * [Q2W3 Post Order](http://wordpress.org/extend/plugins/q2w3-post-order/)
 
 == Changelog ==
+
+= 3.0 =
+* This version brings you a long waited capability to stick widgets located in different sidebars! Enjoy!
+* Fixed conflict with WP Page Widget plugin 
+* A few small bugs cleaned 
+* Warning! "Disable plugin on mobile devices" and "Disable plugin on tablet devices" options now are depricated and will be removed in the next release. Use "Screen Max Width" option instead!
 
 = 2.3 =
 * Now user can disable plugin, when browser window width is less then specified value (check plugin options). 
