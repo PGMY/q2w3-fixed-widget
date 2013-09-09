@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sidebar, widget, scroll, scrolling, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 4.0
+Stable tag: 4.0.1
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -84,9 +84,12 @@ Goto [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/contacts/)
 
 == Changelog ==
 
+= 4.0.1 =
+* Hotfix! Remove problem with duplicated widgets code.
+
 = 4.0 =
 * Resolved [widget jumping](http://wordpress.org/support/topic/widgets-below-fixed-widgets-jump-up)
-* Added code to automaticaly fix "widget id problem"
+* Added code to automatically fix "widget id problem"
 * Added new compatibility option (plugin priority)
 * Added complete uninstall (uninstall script launched automatically when you DELETE plugin)
 * Added Spanish translation

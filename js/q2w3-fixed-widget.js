@@ -23,9 +23,11 @@ function q2w3_sidebar(options) {
 			widgets[i] = new widget();
 			widgets[i].obj = widget_obj;
 			widgets[i].clone = widget_obj.clone();
+			widgets[i].clone.children().remove();
 			widgets[i].clone_id = widget_obj.attr('id') + '_clone';
 			widgets[i].clone.addClass('q2w3-widget-clone');
 			widgets[i].clone.attr('id', widgets[i].clone_id);
+			widgets[i].clone.css('height', widget_obj.height());
 			widgets[i].clone.css('visibility', 'hidden');
 			widgets[i].offset_top = widget_obj.offset().top;
 			widgets[i].fixed_margin_top = fixed_margin_top;
