@@ -2,31 +2,31 @@ function q2w3_sidebar(options) {
 	
 	if ( !options.widgets) return false;
 	
+	if ( options.widgets.length < 1) return false;
+	
 	if ( !options.sidebar) options.sidebar = 'q2w3-default-sidebar'; 
 		
+	function widget() {} // widget class
+	
 	var widgets = new Array();
 	
 	var window_height = jQuery(window).height();
 	var document_height = jQuery(document).height();
-		
-	function widget(obj, position, offset_top, fixed_margin_top, fixed_margin_bottom, height, next_widgets_height) {
-		this.obj = obj;
-		this.position = position;
-		this.fixed_margin_top = fixed_margin_top;
-		this.fixed_margin_bottom = fixed_margin_bottom;
-		this.offset_top = offset_top;
-		this.height = height;
-		this.next_widgets_height = next_widgets_height;
-	}
-	
 	var fixed_margin_top = options.margin_top;
-		
+	
+	jQuery('.q2w3-widget-clone').remove(); // clear fixed mode p1
+	
 	for ( var i = 0; i < options.widgets.length; i++ ) {
 		widget_obj = jQuery('#' + options.widgets[i]);
-		if ( widget_obj.attr('id') ) { // element exists
+		widget_obj.css('position',''); // clear fixed mode p2
+		if ( widget_obj.attr('id') ) { 
 			widgets[i] = new widget();
 			widgets[i].obj = widget_obj;
-			widgets[i].position = widget_obj.css('position');
+			widgets[i].clone = widget_obj.clone();
+			widgets[i].clone_id = widget_obj.attr('id') + '_clone';
+			widgets[i].clone.addClass('q2w3-widget-clone');
+			widgets[i].clone.attr('id', widgets[i].clone_id);
+			widgets[i].clone.css('visibility', 'hidden');
 			widgets[i].offset_top = widget_obj.offset().top;
 			widgets[i].fixed_margin_top = fixed_margin_top;
 			widgets[i].height = widget_obj.outerHeight(true);
@@ -37,24 +37,20 @@ function q2w3_sidebar(options) {
 		}
 	}
 	
-	if ( widgets.length < 1 ) return false;
-	
-	for ( var i = 0; i < widgets.length ; i++ ) { 
-		if (widgets[i]) widgets[i].obj.css('position', '');
-	}
-	
-	for ( var i = 0; i < widgets.length ; i++ ) { 
-		if (widgets[i]) widgets[i].offset_top = widgets[i].obj.offset().top;
-	}
-	
 	var next_widgets_height = 0;
 	
+	var widget_parent_container;
+		
 	for ( var i = widgets.length - 1; i >= 0; i-- ) {
 		if (widgets[i]) {
 			widgets[i].next_widgets_height = next_widgets_height;
 			widgets[i].fixed_margin_bottom += next_widgets_height;
 			next_widgets_height += widgets[i].height;
-			if ( widgets[i].position != widgets[i].obj.css('position') ) widgets[i].obj.css('position', widgets[i].position);
+			if ( !widget_parent_container ) {
+				widget_parent_container = widget_obj.parent();
+				widget_parent_container.css('height','');
+				widget_parent_container.height(widget_parent_container.height());
+			}
 		}
 	}
 	
@@ -66,8 +62,8 @@ function q2w3_sidebar(options) {
 	
 	function fixed_widget(widget) {
 		
-		var scroll_position_trigger_top = widget.offset_top - widget.fixed_margin_top;
-		var scroll_position_trigger_bottom = document_height - options.margin_bottom;
+		var trigger_top = widget.offset_top - widget.fixed_margin_top;
+		var trigger_bottom = document_height - options.margin_bottom;
 	
 		var widget_width = widget.obj.css('width');
 		var widget_margin = widget.obj.css('margin');
@@ -79,19 +75,20 @@ function q2w3_sidebar(options) {
 		
 		jQuery(window).on('scroll.' + options.sidebar, function (event) {
 			var scroll = jQuery(this).scrollTop();
-			if ( scroll + widget.fixed_margin_bottom >= scroll_position_trigger_bottom ) { // fixed bottom
+			if ( scroll + widget.fixed_margin_bottom >= trigger_bottom ) { // fixed bottom
 				if ( !style_applied_bottom ) {
 					widget.obj.css('position', 'fixed');
 					widget.obj.css('top', '');
 					widget.obj.css('width', widget_width);
 					widget.obj.css('margin', widget_margin);
 					widget.obj.css('padding', widget_padding);
+					if(jQuery('#'+widget.clone_id).length <= 0) widget.obj.before(widget.clone);
 					style_applied_bottom = true;
 					style_applied_top = false;
 					style_applied_normal = false;
 				}
-				widget.obj.css('bottom', scroll + window_height + widget.next_widgets_height - scroll_position_trigger_bottom);
-			} else if ( scroll >= scroll_position_trigger_top ) { // fixed top
+				widget.obj.css('bottom', scroll + window_height + widget.next_widgets_height - trigger_bottom);
+			} else if ( scroll >= trigger_top ) { // fixed top
 				if ( !style_applied_top ) {
 					widget.obj.css('position', 'fixed');
 					widget.obj.css('top', widget.fixed_margin_top);
@@ -99,6 +96,7 @@ function q2w3_sidebar(options) {
 					widget.obj.css('width', widget_width);
 					widget.obj.css('margin', widget_margin);
 					widget.obj.css('padding', widget_padding);
+					if(jQuery('#'+widget.clone_id).length <= 0) widget.obj.before(widget.clone);
 					style_applied_top = true;
 					style_applied_bottom = false;
 					style_applied_normal = false;
@@ -110,6 +108,7 @@ function q2w3_sidebar(options) {
 					widget.obj.css('width', '');
 					widget.obj.css('margin', '');
 					widget.obj.css('padding', '');
+					if(jQuery('#'+widget.clone_id).length > 0) jQuery('#'+widget.clone_id).remove();
 					style_applied_normal = true;
 					style_applied_top = false;
 					style_applied_bottom = false;
@@ -125,6 +124,7 @@ function q2w3_sidebar(options) {
 				widget.obj.css('width', '');
 				widget.obj.css('margin', '');
 				widget.obj.css('padding', '');
+				if(jQuery('#'+widget.clone_id).length > 0) jQuery('#'+widget.clone_id).remove();
 				style_applied_normal = true;
 				style_applied_top = false;
 				style_applied_bottom = false;				

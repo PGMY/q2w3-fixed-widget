@@ -1,10 +1,10 @@
 === Q2W3 Fixed Widget (Sticky Widget) ===
 Contributors: Max Bond
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q36H2MHNVVP7U
-Tags: sidebar, widget, scroll, fixed, floating, sticky, russian, q2w3
+Tags: sidebar, widget, scroll, scrolling, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 3.0
+Tested up to: 3.6
+Stable tag: 4.0
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -28,7 +28,11 @@ Compatibility note. The plugin is not working with all themes. Theme requirement
 
 In some cases (widget "jumping" during scroll and etc.) theme CSS changes may be required.
 
-Supported languages: English, Russian 
+Supported languages: 
+
+* English
+* Russian
+* Spanish - [Ramón](http://apasionados.es) 
 
 == Installation ==
 
@@ -62,6 +66,10 @@ Make sure you have updated plugin to version 2.x. Go to WP admin area, Appearanc
 
 This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalculates sticky widgets parameters. Required by sites with dynamic content (infinite scroll, image lazy load and other javascript stuff). The option have impact on the site performance (client side). Recommended values: 250 - 1500 milliseconds. If you don't have dynamic content, set Refresh interval = 0. 
 
+= I am ready to pay for advanced help. How to contact you? =
+
+Goto [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/contacts/)
+
 == Screenshots ==
 
 1. Widget with enabled "Fixed widget" option
@@ -75,6 +83,14 @@ This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalcul
 * [Q2W3 Post Order](http://wordpress.org/extend/plugins/q2w3-post-order/)
 
 == Changelog ==
+
+= 4.0 =
+* Resolved [widget jumping](http://wordpress.org/support/topic/widgets-below-fixed-widgets-jump-up)
+* Added code to automaticaly fix "widget id problem"
+* Added new compatibility option (plugin priority)
+* Added complete uninstall (uninstall script launched automatically when you DELETE plugin)
+* Added Spanish translation
+* Removed depricated options
 
 = 3.0 =
 * This version brings you a long waited capability to stick widgets located in different sidebars! Enjoy!
@@ -101,7 +117,7 @@ This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalcul
 
 = 2.2 =
 * Now the plugin is able to reflect dynamic page content changes (infinite scroll, ajax basket and other javascript stuff)!!!
-* Added new option to plugin settings: Refresh interval. Recommended values between 250 - 1500 milliseconds. Note: setting have impact on the site performance (client side). If you don't have dynamic content, set Refresh interval = 0. 
+* Added new option to plugin settings: Refresh interval. Recommended values between 500 - 2000 milliseconds. Note: setting have impact on the site performance (client side). If you don't have dynamic content, set Refresh interval = 0. 
 * Mobile Detect class updated to version 2.5.7
 
 = 2.1 =
