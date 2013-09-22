@@ -1,74 +1,74 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Q2W3 Fixed Widget\n"
-"POT-Creation-Date: 2013-05-30 21:15+0400\n"
-"PO-Revision-Date: 2013-05-30 21:17+0400\n"
+"POT-Creation-Date: 2013-09-22 19:32+0400\n"
+"PO-Revision-Date: 2013-09-22 19:33+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: c:\\Program Files (x86)\\Zend\\Apache2\\htdocs\\q2w3."
 "ru-dev\\wp-content\\plugins\\q2w3-fixed-widget\n"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:187
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:173
 msgid "Fixed widget"
 msgstr "Зафиксировать виджет"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:227
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:279
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:213
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:275
 msgid "Fixed Widget Options"
 msgstr "Фикс. Виджеты"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:283
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:279
 msgid "Settings saved."
 msgstr ""
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:291
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:287
 msgid "Margin Top:"
 msgstr "Верхний отступ:"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:291
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:287
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:289
 #: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:293
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
 msgid "px"
 msgstr "пикс."
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:293
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:289
 msgid "Margin Bottom:"
 msgstr "Нижний отступ:"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:295
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:291
 msgid "Refresh interval:"
 msgstr "Интервал обновления:"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:295
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:291
 msgid "milliseconds"
 msgstr "миллисекунды"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:295
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:291
 msgid "Set 0 to disable."
 msgstr "Установите 0, чтобы отключить пересчет параметров"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:293
 msgid "Screen Max Width:"
-msgstr "Ширина окна браузера"
+msgstr "Ширина окна браузера:"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:293
 msgid ""
 "Plugin will be disabled when browser window width equals or less then "
 "specified value"
@@ -76,19 +76,19 @@ msgstr ""
 "Плагин будет отключен, если ширина окна браузера меньше указанного значения"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:299
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:295
 msgid "Custom HTML IDs (each one on a new line):"
 msgstr ""
 "HTML-идентификаторы статических виджетов и прочих<br/> нестандартных "
 "элементов (каждый на новой строке):"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:301
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
 msgid "Use jQuery(window).load() hook:"
 msgstr "Вкл. jQuery(window).load():"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:301
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
 msgid ""
 "Use this option only if you have problems with <a href=\"http://wordpress."
 "org/support/topic/doesnt-work-with-infinte-scroll-for-widget-scripts\" "
@@ -99,27 +99,30 @@ msgstr ""
 "target=\"_blank\">другими скриптами</a>"
 
 #: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:303
-msgid "Disable plugin on phone devices:"
-msgstr "Отключить плагин на мобильных:"
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:299
+msgid "Enable plugin for logged in users only:"
+msgstr "Вкл. плагин только для вошедших пользователей:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:301
+msgid "widget_display_callback hook priority:"
+msgstr "Приоритет хука widget_display_callback:"
 
 #: c:\Program Files
 #: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:303
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:305
-msgid "Option depricated. Use Screen Max Width instead!"
-msgstr ""
-"Опция устарела и будет удалена в следующей версии! Вместо нее используйте "
-"опцию \"Ширина окна браузера\""
-
-#: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:305
-msgid "Disable plugin on tablet devices:"
-msgstr "Отключить плагин на планшетах:"
-
-#: c:\Program Files
-#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:307
 msgid "Save Changes"
 msgstr ""
+
+#~ msgid "Disable plugin on phone devices:"
+#~ msgstr "Отключить плагин на мобильных:"
+
+#~ msgid "Option depricated. Use Screen Max Width instead!"
+#~ msgstr ""
+#~ "Опция устарела и будет удалена в следующей версии! Вместо нее используйте "
+#~ "опцию \"Ширина окна браузера\""
+
+#~ msgid "Disable plugin on tablet devices:"
+#~ msgstr "Отключить плагин на планшетах:"
 
 #~ msgid "Fixed Widget Options."
 #~ msgstr "Настройки Фиксированных Виджетов"

@@ -4,7 +4,7 @@ Plugin Name: Q2W3 Fixed Widget
 Plugin URI: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/
 Description: Fixes positioning of the selected widgets, when the page is scrolled down.
 Author: Max Bond
-Version: 4.0.1
+Version: 4.0.3
 Author URI: http://www.q2w3.ru/
 */
 
@@ -38,7 +38,7 @@ class q2w3_fixed_widget {
 	
 	const ID = 'q2w3_fixed_widget';
 	
-	const VERSION = '4.0.1';
+	const VERSION = '4.0.3';
 	
 	protected static $sidebars_widgets;
 	
@@ -50,9 +50,11 @@ class q2w3_fixed_widget {
 		
 		$options = self::load_options();
 		
+		if ( $options['logged_in_req'] && !is_user_logged_in() ) return;
+		
 		add_filter('widget_display_callback', array( 'q2w3_fixed_widget', 'check' ), $options['widget_display_callback_priority'], 3);
 		
-		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.js', array('jquery'), self::VERSION);
+		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.min.js', array('jquery'), self::VERSION);
 				
 		self::check_custom_ids();
 						
@@ -224,6 +226,8 @@ class q2w3_fixed_widget {
 		
 		$d['window-load-enabled'] = false;
 		
+		$d['logged_in_req'] = false;
+		
 		$d['widget_display_callback_priority'] = 30;
 		
 		$d['disable-phone'] = false;
@@ -290,9 +294,11 @@ class q2w3_fixed_widget {
 				
 		echo '<p><span >'. __('Custom HTML IDs (each one on a new line):', 'q2w3_fixed_widget') .'</span><br/><textarea name="'. self::ID .'[custom-ids]" style="width: 320px; height: 120px;">'. $options['custom-ids'] .'</textarea>'.PHP_EOL;
 
-		echo '<p><span style="display: inline-block; width: 195px;">'. __('Use jQuery(window).load() hook:', 'q2w3_fixed_widget') .'</span><input type="checkbox" name="'. self::ID .'[window-load-enabled]" value="yes" '. checked('yes', $options['window-load-enabled'], false) .' /> '. __('Use this option only if you have problems with <a href="http://wordpress.org/support/topic/doesnt-work-with-infinte-scroll-for-widget-scripts" target="_blank">other scroll oriented javascript code</a>', 'q2w3_fixed_widget') .'</p>'.PHP_EOL;
+		echo '<p><span style="display: inline-block; width: 220px;">'. __('Use jQuery(window).load() hook:', 'q2w3_fixed_widget') .'</span><input type="checkbox" name="'. self::ID .'[window-load-enabled]" value="yes" '. checked('yes', $options['window-load-enabled'], false) .' /> '. __('Use this option only if you have problems with <a href="http://wordpress.org/support/topic/doesnt-work-with-infinte-scroll-for-widget-scripts" target="_blank">other scroll oriented javascript code</a>', 'q2w3_fixed_widget') .'</p>'.PHP_EOL;
 
-		echo '<p><span style="display: inline-block; width: 195px;">'. __('widget_display_callback priority:', 'q2w3_fixed_widget') .'</span><select name="'. self::ID .'[widget_display_callback_priority]"><option value="1" '. selected('1', $options['widget_display_callback_priority'], false) .'>1</option><option value="10" '. selected('10', $options['widget_display_callback_priority'], false) .'>10</option><option value="20" '. selected('20', $options['widget_display_callback_priority'], false) .'>20</option><option value="30" '. selected('30', $options['widget_display_callback_priority'], false) .'>30</option><option value="50" '. selected('50', $options['widget_display_callback_priority'], false) .'>50</option><option value="100" '. selected('100', $options['widget_display_callback_priority'], false) .'>100</option></select></p>'.PHP_EOL;
+		echo '<p><span style="display: inline-block; width: 220px;">'. __('Enable plugin for logged in users only:', 'q2w3_fixed_widget') .'</span><input type="checkbox" name="'. self::ID .'[logged_in_req]" value="yes" '. checked('yes', $options['logged_in_req'], false) .' /></p>'.PHP_EOL;
+				
+		echo '<p><span style="display: inline-block; width: 220px;">'. __('widget_display_callback hook priority:', 'q2w3_fixed_widget') .'</span><select name="'. self::ID .'[widget_display_callback_priority]"><option value="1" '. selected('1', $options['widget_display_callback_priority'], false) .'>1</option><option value="10" '. selected('10', $options['widget_display_callback_priority'], false) .'>10</option><option value="20" '. selected('20', $options['widget_display_callback_priority'], false) .'>20</option><option value="30" '. selected('30', $options['widget_display_callback_priority'], false) .'>30</option><option value="50" '. selected('50', $options['widget_display_callback_priority'], false) .'>50</option><option value="100" '. selected('100', $options['widget_display_callback_priority'], false) .'>100</option></select></p>'.PHP_EOL;
 		
 		echo '<p class="submit"><input type="submit" class="button-primary" value="'. __('Save Changes') .'" /></p>'.PHP_EOL;
 
@@ -312,7 +318,13 @@ class q2w3_fixed_widget {
 		
 		if ( strpos($sidebar['before_widget'], 'id="%1$s"') !== false || strpos($sidebar['before_widget'], 'id=\'%1$s\'') !== false ) return;
 		
-		if ( strpos($sidebar['before_widget'], 'id=') === false ) {
+		if ( $sidebar['before_widget'] == '' || $sidebar['before_widget'] == ' ' ) {
+			
+			$wp_registered_sidebars[$sidebar['id']]['before_widget'] = '<div id="%1$s">';
+			
+			$wp_registered_sidebars[$sidebar['id']]['after_widget'] = '</div>';
+			
+		} elseif ( strpos($sidebar['before_widget'], 'id=') === false ) {
 			
 			$tag_end_pos = strpos($sidebar['before_widget'], '>');
 			
@@ -330,9 +342,21 @@ class q2w3_fixed_widget {
 				
 				foreach ( $str_array as $str_part_id => $str_part ) {
 					
-					if ( strpos($str_part, 'id=') !== false ) {
+					if ( strpos($str_part, 'id="') !== false ) {
 						
-						$str_array[$str_part_id] = 'id="%1$s"';
+						$p1 = strpos($str_part, 'id="');
+						
+						$p2 = strpos($str_part, '"', $p1 + 4);
+
+						$str_array[$str_part_id] = substr_replace($str_part, 'id="%1$s"', $p1, $p2 + 1);
+						
+					} elseif ( strpos($str_part, 'id=\'') !== false ) {
+						
+						$p1 = strpos($str_part, 'id=\'');
+						
+						$p2 = strpos($str_part, "'", $p1 + 4);
+						
+						$str_array[$str_part_id] = substr_replace($str_part, 'id=\'%1$s\'', $p1, $p2);
 						
 					}
 					

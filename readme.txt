@@ -3,8 +3,8 @@ Contributors: Max Bond
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q36H2MHNVVP7U
 Tags: sidebar, widget, scroll, scrolling, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 4.0.1
+Tested up to: 3.6.1
+Stable tag: 4.0.3
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -51,6 +51,14 @@ There are several reasons:
 2. Javascript errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate and fix its source. 
 3. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your active theme.
 
+= Why the plugin is not working in Chrome (and other Webkit based browsers)? =
+
+Check your CSS files for these two instructions:
+`-webkit-backface-visibility:hidden;`
+and
+`-webkit-transform: translate3d(0,0,0);`
+Then disable them and see the result.
+
 = I have a responsive theme. How can I make the plugin compatible with it? =
 
 For responsive compatibility I found only one approach: to disable plugin when mobile device detected or when browser window width is less then specified value.
@@ -68,7 +76,7 @@ This option defines (in milliseconds, 1 sec = 1000 ms) how often plugin recalcul
 
 = I am ready to pay for advanced help. How to contact you? =
 
-Goto [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/contacts/)
+Send me email from this page: [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/contacts/)
 
 == Screenshots ==
 
@@ -84,8 +92,12 @@ Goto [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/contacts/)
 
 == Changelog ==
 
+= 4.0.3 =
+* Optimized code to resolve [plugin crash after 4.0.1 update](http://wordpress.org/support/topic/the-plugin-crash-after-401-update) problem
+* Minified javascript code
+
 = 4.0.1 =
-* Hotfix! Remove problem with duplicated widgets code.
+* Hotfix! Removes problem with duplicated widget code.
 
 = 4.0 =
 * Resolved [widget jumping](http://wordpress.org/support/topic/widgets-below-fixed-widgets-jump-up)
