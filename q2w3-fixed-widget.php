@@ -48,11 +48,13 @@ class q2w3_fixed_widget {
 	
 	public static function init() {
 		
+		if ( !is_user_logged_in() ) return;
+		
 		$options = self::load_options();
 		
 		add_filter('widget_display_callback', array( 'q2w3_fixed_widget', 'check' ), $options['widget_display_callback_priority'], 3);
 		
-		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.js', array('jquery'), self::VERSION);
+		wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.min.js', array('jquery'), self::VERSION);
 				
 		self::check_custom_ids();
 						
