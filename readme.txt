@@ -4,24 +4,22 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sidebar, widget, scroll, scrolling, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
 Tested up to: 3.6.1
-Stable tag: 4.0.3
+Stable tag: 4.0.5
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
 == Description ==
 
 Enable "Fixed widget" option in the widget settings (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) 
-and it will be always in sight when page is scrolled down or up.
+and it will be always in sight when page is scrolled down or up. There is no problem to "Fix" or "Stick" more than one widget even located in different sidebars!
 
-There is no problem to "Fix" or "Stick" more than one widget. 
-Version 3.0 brings you a long waited capability to stick widgets located in different sidebars!
+[youtube http://www.youtube.com/watch?v=sHXmeH5TfnA]
 
-[Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
+[Watch the live demo](http://store.places-finder.com/cp-ajax-post-load).
 Right sidebar, last three widgets. Scroll down to the bottom.
 
 Compatibility note. The plugin is not working with all themes. Theme requirements:
 
-* Widgets must have unique id attributes in html code (see [FAQ](http://wordpress.org/extend/plugins/q2w3-fixed-widget/faq/)).
 * jQuery 1.7 required. jQuery 1.8.3 (or later) is recommended.
 * No JavaScript errors, coused by other plugins and scripts.
 * `wp_head()` and `wp_footer()` functions in header.php and footer.php files.
@@ -47,24 +45,24 @@ Supported languages:
 
 There are several reasons:
 
-1. Widgets have no unique IDs. How to check. Place two text widgets in your sidebar. Then look at html source of your site. If these two widgets have the same IDs (widget_text) or they have no IDs at all - that's the problem. How to fix. Find `register_sidebar()` function (look first at functions.php file). Parameter `before_widget` should be like this: `<li id="%1$s" class="widget-container %2$s">`. Attention to this part: `id="%1$s"`.    
-2. Javascript errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate and fix its source. 
-3. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your active theme.
+1. Javascript errors on page. Commonly caused by buggy plugins. Check javascript console of your browser. If you find errors, try to locate and fix its source. 
+2. No `wp_head()` and `wp_footer()` functions in template. Check header.php and footer.php files of your active theme.
+3. Conflicts with other plugins and scripts
+4. CSS incompatibility
 
 = Why the plugin is not working in Chrome (and other Webkit based browsers)? =
 
 Check your CSS files for these two instructions:
-`-webkit-backface-visibility:hidden;`
-and
-`-webkit-transform: translate3d(0,0,0);`
-Then disable them and see the result.
+`-webkit-backface-visibility:hidden;
+-webkit-transform: translate3d(0,0,0);`
+If found, disable them and see the result.
 
 = I have a responsive theme. How can I make the plugin compatible with it? =
 
-For responsive compatibility I found only one approach: to disable plugin when mobile device detected or when browser window width is less then specified value.
-There are several options to accomplish this task. The latest (and recommended!) is to enable "Screen Max Width" option. 
+There are several options to accomplish this task. 
+First, is to enable "Screen Max Width" option. 
 For example you have a responsive styles: `@media screen and (max-width: 940px) {...}`. Set "Screen Max Width" = 940 - to disable plugin in responsive mode. 
-The other options are: "Disable plugin on mobile devices" and "Disable plugin on tablet devices". From version 3.0 these options are depricated and will be removed in the near future.  
+Second, use "Inherit widget width from the parent container" option.  
 
 = How to prevent overlapping with the footer? =
 
@@ -92,6 +90,13 @@ Send me email from this page: [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/
 
 == Changelog ==
 
+= 4.0.5 =
+* New option "Inherit widget width from the parent container" to better support responsive layouts.
+* Javascript optimization.
+
+= 4.0.4 =
+* Added option "Auto fix widget id". It is on by default. If the plugin is working with this option switched off - leave it in off position!  
+
 = 4.0.3 =
 * Optimized code to resolve [plugin crash after 4.0.1 update](http://wordpress.org/support/topic/the-plugin-crash-after-401-update) problem
 * Minified javascript code
@@ -117,7 +122,7 @@ Send me email from this page: [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/
 * Now user can disable plugin, when browser window width is less then specified value (check plugin options). 
 
 = 2.2.4 =
-* This version is jQuery 1.9 compatible
+* This version compatible with jQuery 1.9 and 1.10 
 
 = 2.2.3 =
 * Little internal improvments
