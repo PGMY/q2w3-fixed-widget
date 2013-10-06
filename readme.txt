@@ -11,14 +11,11 @@ Fixes positioning of the selected widgets, when the page is scrolled down.
 == Description ==
 
 Enable "Fixed widget" option in the widget settings (see [screenshot](http://wordpress.org/extend/plugins/q2w3-fixed-widget/screenshots/)) 
-and it will be always in sight when page is scrolled down or up.
+and it will be always in sight when page is scrolled down or up. There is no problem to "Fix" or "Stick" more than one widget even located in different sidebars!
 
 [youtube http://www.youtube.com/watch?v=sHXmeH5TfnA]
 
-There is no problem to "Fix" or "Stick" more than one widget. 
-Version 3.0 brings you a long waited capability to stick widgets located in different sidebars!
-
-[Watch the demo](http://store.places-finder.com/cp-ajax-post-load).
+[Watch the live demo](http://store.places-finder.com/cp-ajax-post-load).
 Right sidebar, last three widgets. Scroll down to the bottom.
 
 Compatibility note. The plugin is not working with all themes. Theme requirements:

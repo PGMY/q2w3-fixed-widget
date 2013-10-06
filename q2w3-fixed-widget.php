@@ -54,7 +54,7 @@ class q2w3_fixed_widget { // Plugin class
 
 			add_action('wp_loaded', array( __CLASS__, 'custom_ids' ));
 			
-			add_action('wp_footer', array( __CLASS__, 'action_script' ), 1);
+			add_action('wp_footer', array( __CLASS__, 'action_script' ));
 		
 			wp_enqueue_script('q2w3-fixed-widget', plugin_dir_url( __FILE__ ) . 'js/q2w3-fixed-widget.min.js', array('jquery'), self::VERSION);
 			
