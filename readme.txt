@@ -3,8 +3,8 @@ Contributors: Max Bond
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q36H2MHNVVP7U
 Tags: sidebar, widget, scroll, scrolling, fixed, floating, sticky, russian, q2w3
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 4.0.5
+Tested up to: 3.8.0
+Stable tag: 4.0.6
 
 Fixes positioning of the selected widgets, when the page is scrolled down. 
 
@@ -31,6 +31,7 @@ Supported languages:
 * English
 * Russian
 * Spanish - [Ramón](http://apasionados.es) 
+* French - [Murat](http://wptheme.fr)
 
 == Installation ==
 
@@ -89,6 +90,10 @@ Send me email from this page: [http://www.q2w3.ru/contacts/](http://www.q2w3.ru/
 * [Q2W3 Post Order](http://wordpress.org/extend/plugins/q2w3-post-order/)
 
 == Changelog ==
+
+= 4.0.6 =
+* A small [bug fix](http://wordpress.org/support/topic/widget-gets-wider-when-it-reaches-the-top)
+* Added French translation
 
 = 4.0.5 =
 * New option "Inherit widget width from the parent container" to better support responsive layouts.

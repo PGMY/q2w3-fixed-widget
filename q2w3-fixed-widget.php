@@ -4,7 +4,7 @@ Plugin Name: Q2W3 Fixed Widget
 Plugin URI: http://www.q2w3.ru/q2w3-fixed-widget-wordpress-plugin/
 Description: Fixes positioning of the selected widgets, when the page is scrolled down.
 Author: Max Bond
-Version: 4.0.5
+Version: 4.0.6
 Author URI: http://www.q2w3.ru/
 */
 
@@ -16,7 +16,7 @@ class q2w3_fixed_widget { // Plugin class
 	
 	const ID = 'q2w3_fixed_widget';
 	
-	const VERSION = '4.0.5';
+	const VERSION = '4.0.6';
 	
 	protected static $sidebars_widgets;
 	
@@ -144,11 +144,11 @@ class q2w3_fixed_widget { // Plugin class
 			
 				$i++;
 				
-				if ( isset($options['width-inherit']) && $options['width-inherit'] ) $options['width-inherit'] = 'true'; else $options['width-inherit'] = 'false';
+				if ( isset($options['width-inherit']) && $options['width-inherit'] ) $width_inherit = 'true'; else $width_inherit = 'false';
 				
 				$widgets_array = implode(',', $widgets);
 				
-				echo '  var q2w3_sidebar_'. $i .'_options = { "sidebar" : "'. $sidebar .'", "margin_top" : '. $options['margin-top'] .', "margin_bottom" : '. $options['margin-bottom'] .', "screen_max_width" : '. $options['screen-max-width'] .', "width_inherit" : '. $options['width-inherit'] .', "widgets" : ['. $widgets_array .'] };'.PHP_EOL;
+				echo '  var q2w3_sidebar_'. $i .'_options = { "sidebar" : "'. $sidebar .'", "margin_top" : '. $options['margin-top'] .', "margin_bottom" : '. $options['margin-bottom'] .', "screen_max_width" : '. $options['screen-max-width'] .', "width_inherit" : '. $width_inherit .', "widgets" : ['. $widgets_array .'] };'.PHP_EOL;
 				
 				echo '  q2w3_sidebar(q2w3_sidebar_'. $i .'_options);'.PHP_EOL;
 				
